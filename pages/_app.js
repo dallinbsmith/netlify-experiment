@@ -5,6 +5,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <div>
       <Navbar />
+      <div>something</div>
       <Component {...pageProps} />
     </div>
   )
