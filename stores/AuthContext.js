@@ -11,9 +11,17 @@ export const AuthContext = createContext({
 
 export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
+
   useEffect(() => {
+    netlifyIdentity.on('login', (user)=> {
+      setUser(user)
+      netlifyIdentity.close()
+      console.log('login event')
+    })
     netlifyIdentity.init()
-}, []);
+    console.log('user', user)
+    }, []);
+
     const login = () => {
         netlifyIdentity.open()
     }
