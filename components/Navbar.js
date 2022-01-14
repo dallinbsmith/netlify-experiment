@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import AuthContext from '../stores/AuthContext'
 
 export default function Navbar() {
-  const user = useContext(AuthContext)
+  const { user, login } = useContext(AuthContext)
   return (
     <div className="container">
       <nav>
@@ -13,6 +13,7 @@ export default function Navbar() {
         <ul>
           <li><Link href="/"><a>Home</a></Link></li>
           <li><Link href="/guides"><a>Guides</a></Link></li>
+          <li onClick = {login}>Login</li>
         </ul>
       </nav>
       <div className="banner">
