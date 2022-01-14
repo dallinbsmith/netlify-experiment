@@ -5,7 +5,7 @@ import AuthContext from '../stores/AuthContext'
 
 export default function Navbar() {
   const { user, login, logout, authReady } = useContext(AuthContext)
-
+  console.log('user', user)
   return (
     <div className="container">
       <nav>
@@ -16,8 +16,13 @@ export default function Navbar() {
           <li><Link href="/"><a>Home</a></Link></li>
           <li><Link href="/guides"><a>Guides</a></Link></li>
           {!user ?
-          <li onClick = {login}>Login</li> : 
-          <li onClick = {logout}>Logout</li>}
+          <li onClick = {login}>Login</li> :
+          <>
+          <li>{user?.user_metadata
+          ?.full_name}</li>
+          <li onClick = {logout}>Logout</li>
+          </> 
+          }
         </ul>
         }
       </nav>
